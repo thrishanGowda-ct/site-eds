@@ -2,8 +2,10 @@
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
-  position: fixed;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 header nav {

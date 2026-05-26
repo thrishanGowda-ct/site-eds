@@ -119,6 +119,14 @@ function decorateButtons(main) {
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  if (!main.id) main.id = 'main-content';
+  if (!document.querySelector('.skip-link')) {
+    const skip = document.createElement('a');
+    skip.href = '#main-content';
+    skip.className = 'skip-link';
+    skip.textContent = 'Skip to main content';
+    document.body.prepend(skip);
+  }
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

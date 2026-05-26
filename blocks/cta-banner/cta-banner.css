@@ -1,0 +1,63 @@
+.cta-banner-inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 28rem;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.cta-banner-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cta-banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, transparent 60%);
+}
+
+.cta-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+  padding: 3rem;
+  color: var(--inverse-text-color);
+}
+
+.cta-banner-content h2 {
+  margin-top: 0;
+  color: var(--inverse-text-color);
+}
+
+.cta-banner-content p {
+  margin-top: 1rem;
+  color: var(--inverse-muted-color);
+}
+
+.cta-banner-content .button-wrapper {
+  margin-top: 2rem;
+}
+
+.cta-banner-content a.button.primary {
+  box-shadow: 4px 4px 0 0 rgb(255 255 255 / 30%);
+}
+
+@media (width < 600px) {
+  .cta-banner-inner {
+    min-height: 20rem;
+  }
+
+  .cta-banner-content {
+    padding: 2rem;
+  }
+}
