@@ -116,13 +116,33 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  let resp = await fetch('/content/nav.plain.html');
+  if (!resp.ok) {
+    resp = await fetch(`${navPath}.plain.html`);
+  }
+  if (!resp.ok) {
+    const fragment = await loadFragment(navPath);
+    if (!fragment) return;
+    block.textContent = '';
+    block.append(fragment);
+    return;
+  }
+  const html = await resp.text();
+  const fragment = document.createElement('div');
+  fragment.innerHTML = html;
 
   // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
-  while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
+  [...fragment.children].forEach((child) => {
+    const section = document.createElement('div');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'default-content-wrapper';
+    while (child.firstChild) wrapper.append(child.firstChild);
+    section.append(wrapper);
+    nav.append(section);
+  });
 
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
