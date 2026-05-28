@@ -1,0 +1,149 @@
+/* hero-landing block - Two-column hero: heading + subheading + CTA buttons (left), image grid (right) */
+
+/* Section override */
+main > .hero-landing-container {
+  background-color: var(--light-color);
+  padding: 128px 0;
+}
+
+.hero-landing-container > .hero-landing-wrapper {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Block base */
+.hero-landing {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Row */
+.hero-landing > div {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Text cell */
+.hero-landing > div > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-landing h1 {
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-color);
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero-landing > div > div:first-child > p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+/* Button container paragraphs */
+.hero-landing .button-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero-landing .button-group a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 2px solid var(--text-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.hero-landing .button-group a:first-child {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.hero-landing .button-group a:last-child {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.hero-landing .button-group a:first-child:hover {
+  opacity: 0.85;
+}
+
+.hero-landing .button-group a:last-child:hover {
+  background-color: var(--light-color);
+}
+
+/* Image grid cell */
+.hero-landing .image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.hero-landing .image-grid picture {
+  display: block;
+}
+
+.hero-landing .image-grid picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  aspect-ratio: 3 / 2;
+  display: block;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .hero-landing-container > .hero-landing-wrapper {
+    padding: 0 32px;
+  }
+
+  .hero-landing > div {
+    flex-direction: row;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-landing > div > div:first-child {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+
+  .hero-landing > div > div:last-child {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+
+  .hero-landing h1 {
+    font-size: 56px;
+  }
+
+  .hero-landing .image-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

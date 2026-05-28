@@ -1,0 +1,94 @@
+/* Section-level two-column layout */
+.accordion-faq-container {
+  display: block;
+}
+
+.accordion-faq-container > .default-content-wrapper {
+  margin-bottom: 32px;
+}
+
+@media (width >= 900px) {
+  .accordion-faq-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .accordion-faq-container > .default-content-wrapper {
+    margin-bottom: 0;
+  }
+
+  .accordion-faq-container > .accordion-faq-wrapper {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+/* Block container */
+.accordion-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* FAQ item */
+.accordion-faq details {
+  border: 1px solid rgb(232 232 232);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.accordion-faq details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s;
+}
+
+.accordion-faq details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* + icon via ::after pseudo-element */
+.accordion-faq details summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-left: 16px;
+  transition: transform 0.3s;
+  color: var(--text-color);
+}
+
+.accordion-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+/* Question heading */
+.accordion-faq details summary h3 {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+  text-transform: none;
+}
+
+/* Answer body */
+.accordion-faq details .accordion-faq-item-body {
+  padding: 0 32px 32px;
+}
+
+.accordion-faq details .accordion-faq-item-body p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.7;
+  color: rgb(64 64 64);
+  margin: 0;
+}
