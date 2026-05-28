@@ -1,0 +1,107 @@
+/* Block: cards-article - 4-column article cards grid with image, category tag, date, and heading */
+
+.cards-article > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards-article > ul > li {
+  border: 1px solid rgb(232 232 232);
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cards-article > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.cards-article .cards-article-card-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-article > ul > li img {
+  width: 100%;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body: flex wrap so meta (tag+date) flows on one row, heading on next */
+.cards-article .cards-article-card-body {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Category tag pill - <p> containing <em> */
+.cards-article .cards-article-card-body p:has(em) {
+  margin: 0;
+}
+
+.cards-article .cards-article-card-body p em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  background-color: rgb(244 254 139);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  line-height: 19.2px;
+}
+
+/* Date text */
+.cards-article .cards-article-card-body p:last-child {
+  font-size: var(--body-font-size-xs);
+  font-family: var(--body-font-family);
+  color: var(--link-color);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Heading - take full width to sit on its own row, ordered after meta */
+.cards-article .cards-article-card-body h3 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  font-family: var(--heading-font-family);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 0;
+  width: 100%;
+  order: 1;
+}
+
+.cards-article .cards-article-card-body h3 a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cards-article .cards-article-card-body h3 a:hover {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+@media (width >= 600px) {
+  .cards-article > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-article > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
